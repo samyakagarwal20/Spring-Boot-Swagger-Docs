@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    jdbcUrl: jdbc:mysql://localhost:3306/pracDB?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
