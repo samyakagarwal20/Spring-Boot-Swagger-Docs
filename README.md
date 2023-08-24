@@ -52,9 +52,14 @@ There are many tools we can use to document the RESTful APIs. Some of them inclu
 💡 Springfox is only compatible with spring boot till version 2.6.x.
 </aside>
 
+<br>
+
 <aside>
 💡 Spring boot version 3.x is not compatible with Springfox as spring boot 3.x make use of jakarta instead of javax whlie Springfox has certain mixed dependencies internally with javax.
 </aside>
+
+<br>
+<br>
 
 With Spring boot 3x, we can make use of openAPI v3 provided by spring-doc for which we can add the following dependency:
 ```
