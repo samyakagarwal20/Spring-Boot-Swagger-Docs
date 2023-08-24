@@ -7,6 +7,11 @@ import com.yflash.tech.SampleAPI.model.in.PostUserRequest;
 import com.yflash.tech.SampleAPI.model.in.PutUserRequest;
 import com.yflash.tech.SampleAPI.model.out.User;
 import com.yflash.tech.SampleAPI.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +30,10 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Operation(summary = "Get All Users", responses = {
+            @ApiResponse(responseCode = "200", description = "Successful Operation", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = User.class)))),
+            @ApiResponse(responseCode = "404", description = "Not found", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })
     @GetMapping(value = "/get-all-users", produces = "application/json")
     ResponseEntity<List<UserEntity>> getAllUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
